@@ -53,19 +53,22 @@ resource "aws_instance" "web" {
 # }
 
 
-#S3
+# #S3
 
 # module "s3_bucket" {
-#   source             = "./modules/s3"
-#   bucket_name       = "my-unique-bucket-name"  # Update to a unique bucket name
-#   acl                = "private"  # Change as necessary
-#   versioning_enabled = true  # Enable versioning if needed
-#   prevent_destroy    = true  # Prevent accidental destruction
-#   tags               = {
-#     Environment = "Dev"
-#     Name        = "MyS3Bucket"
-#   }
+#   source = "./modules/s3"
+
+#   bucket_name        = "my-unique-bucket-name"
+#   environment        = "prod"
+#   versioning_enabled = true
+#   prevent_destroy    = true #Prevent accidental destruction
+#   acl                = "private"
+#   logging_enabled    = true
+#   logging_bucket     = "my-logging-bucket"
 # }
+
+
+
 
 # #EC2
 

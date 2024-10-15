@@ -5,6 +5,11 @@ variable "bucket_name" {
   type        = string
 }
 
+variable "environment" {
+  description = "The environment this bucket is for (e.g., dev, staging, prod)"
+  type        = string
+}
+
 variable "acl" {
   description = "The canned ACL to apply"
   type        = string
@@ -15,6 +20,17 @@ variable "versioning_enabled" {
   description = "Enable versioning on the bucket"
   type        = bool
   default     = false
+}
+variable "logging_enabled" {
+  description = "Enable logging for the bucket"
+  type        = bool
+  default     = false
+}
+
+variable "logging_bucket" {
+  description = "The bucket to store logs in (if logging is enabled)"
+  type        = string
+  default     = ""
 }
 
 variable "prevent_destroy" {
@@ -28,3 +44,4 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
