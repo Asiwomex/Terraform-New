@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"  # Change this to your preferred region
+  region = "us-east-2"  # Change this to your preferred region
 }
 
 # VPC
@@ -102,7 +102,7 @@ resource "aws_security_group" "instance_sg" {
 # Launch Template
 resource "aws_launch_template" "my_launch_template" {
   name_prefix   = "my-launch-template"
-  image_id      = "ami-0dba2cb6798deb6d8"  # Ubuntu Server 20.04 LTS AMI (Change to match your region)
+  image_id      = "ami-0ea3c35c5c3284d82"  # Ubuntu Server 20.04 LTS AMI (Change to match your region)
   instance_type = "t2.micro"
   
   security_group_names = [aws_security_group.instance_sg.name]
