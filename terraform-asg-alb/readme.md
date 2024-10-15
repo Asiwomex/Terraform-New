@@ -1,5 +1,5 @@
 # TASK
-Deploying an Auto Scaling Group (ASG) with an Application Load Balancer (ALB) is a great intermediate task that demonstrates how to build a scalable and resilient architecture using Terraform. Here’s a step-by-step guide.
+Deploying an Auto Scaling Group (ASG) with an Application Load Balancer (ALB). Here’s a step-by-step guide.
 
 ### Prerequisites
 1. **AWS Account**: Access credentials for an AWS account (Access Key and Secret Key).

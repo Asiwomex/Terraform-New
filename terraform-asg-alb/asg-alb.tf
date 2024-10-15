@@ -12,6 +12,7 @@ resource "aws_vpc" "my_vpc" {
     Name = "MyASGVPC"
   }
 }
+
 # Subnet
 resource "aws_subnet" "my_subnet" {
   vpc_id            = aws_vpc.my_vpc.id
@@ -101,12 +102,12 @@ resource "aws_security_group" "instance_sg" {
 # Launch Template
 resource "aws_launch_template" "my_launch_template" {
   name_prefix   = "my-launch-template"
-  image_id      = "ami-0c55b159cbfafe1f0"  # Amazon Linux 2 (Change as needed for your region)
+  image_id      = "ami-0dba2cb6798deb6d8"  # Ubuntu Server 20.04 LTS AMI (Change to match your region)
   instance_type = "t2.micro"
   
   security_group_names = [aws_security_group.instance_sg.name]
 
-  user_data = base64encode("#!/bin/bash\nyum update -y\nyum install -y httpd\nsystemctl start httpd\nsystemctl enable httpd\necho '<h1>Hello from ASG</h1>' > /var/www/html/index.html")
+  user_data = base64encode("#!/bin/bash\napt update -y\napt install -y apache2\nsystemctl start apache2\nsystemctl enable apache2\necho '<h1>Hello from ASG - Ubuntu</h1>' > /var/www/html/index.html")
 
   tags = {
     Name = "MyEC2Instance"
