@@ -116,10 +116,11 @@ resource "aws_launch_template" "my_launch_template" {
 
 # Auto Scaling Group
 resource "aws_autoscaling_group" "my_asg" {
-  desired_capacity     = 2
-  max_size             = 3
-  min_size             = 1
+  desired_capacity     = 2  # Adjust the desired number of instances as needed
+  max_size             = 3  # Adjust the maximum number of instances as needed
+  min_size             = 1  # Adjust the minimum number of instances as needed
   vpc_zone_identifier  = [aws_subnet.my_subnet.id]
+  
   launch_template {
     id      = aws_launch_template.my_launch_template.id
     version = "$Latest"
@@ -127,14 +128,17 @@ resource "aws_autoscaling_group" "my_asg" {
 
   target_group_arns = [aws_lb_target_group.my_target_group.arn]
 
-  tags = [
-    {
-      key                 = "Name"
-      value               = "MyASGInstance"
-      propagate_at_launch = true
-    }
-  ]
+  # Use the 'tag' block for tags in Auto Scaling Groups
+  tag {
+    key                 = "Name"
+    value               = "MyASGInstance"
+    propagate_at_launch = true
+  }
 }
+
+
+
+
 
 # ALB
 resource "aws_lb" "my_alb" {
