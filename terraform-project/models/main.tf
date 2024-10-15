@@ -66,3 +66,14 @@ resource "aws_instance" "web" {
 #     Name        = "MyS3Bucket"
 #   }
 # }
+
+# #EC2
+
+# module "ubuntu_instance" {
+#   source        = "./modules/ec2"
+#   ami           = "ami-0ea3c35c5c3284d82"  # Update to the latest Ubuntu LTS AMI ID
+#   instance_type = "t2.micro"
+#   subnet_id     = module.vpc.public_subnet_id
+#   security_groups = [module.web_sg.id]  # Use the security group module
+#   instance_name = "UbuntuInstance"
+# }
